@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Página de contacto de Víctor Jurado Beltrán"
+    />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Contacto - Víctor Jurado Beltrán</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-content">
+        <a class="logoheader" href="index.html">VJ</a>
+        <nav class="nav">
+          <ul class="nav-list">
+            <li><a href="#">Sobre mí</a></li>
+            <li><a href="#">Habilidades</a></li>
+            <li><a href="#">Fichas de referencia rápida</a></li>
+            <li><a href="#">Recursos</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" aria-label="Abrir menú">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="contact">
+        <h1 class="contact-title">Contacto</h1>
+        <form class="contact-form" action="/enviar" method="POST">
+          <fieldset class="contact-fieldset">
+            <legend>Introduce tus datos</legend>
+            <div class="form-div">
+              <label for="nombre">Nombre</label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                placeholder="Ej: Ramón"
+                required
+              />
+            </div>
+
+            <div class="form-div">
+              <label for="apellidos">Apellidos</label>
+              <input
+                type="text"
+                id="apellidos"
+                name="apellidos"
+                placeholder="Ej: Pérez Gómez"
+                required
+              />
+            </div>
+
+            <div class="form-div">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Ej: ramon@perez.com"
+                required
+              />
+            </div>
+
+            <div class="form-div">
+              <label for="asunto">Asunto</label>
+              <input
+                type="text"
+                name="asunto"
+                id="asunto"
+                placeholder="Ej: Información"
+                required
+              />
+            </div>
+
+            <div class="form-div">
+              <label for="mensaje">Escribe aquí tu mensaje</label>
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                rows="8"
+                placeholder="Ej: Hola, me gustaría saber más sobre..."
+                required
+                maxlength="2000"
+              ></textarea>
+            </div>
+          </fieldset>
+          <div class="form-buttons">
+            <button class="button-1" type="submit">Enviar</button>
+            <button class="button-2" type="reset">Borrar</button>
+          </div>
+        </form>
+      </section>
+    </main>
+    <footer class="footer">
+      <nav class="footer-nav">
+        <a
+          href="https://github.com/Trinchapinos"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >
+        <a href="#" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="index.html">Home</a>
+      </nav>
+      <p class="copyright">
+        &copy; 2026 Víctor Jurado Beltrán <span class="heart">❤</span> -
+        Estudiante de Desarrollo web con IA
+      </p>
+    </footer>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+/* ===== Reset CSS ===== */
+
+/* Todos los elementos: sin márgenes ni padding y con box-sizing border-box */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Evita que el móvil cambie el tamaño del texto por su cuenta */
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Texto legible por defecto */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Títulos: sin tamaño ni peso propios (los defines tú en styles.css) */
+h1, h2, h3, h4, h5, h6 {
+  font: inherit;
+}
+
+/* Listas sin viñetas */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Enlaces sin subrayado y con el color del texto que los rodea */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Imágenes y similares: bloque y nunca más anchas que su contenedor */
+img,
+picture,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Formularios y botones: heredan la fuente y el color de la página */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Tablas sin huecos entre celdas */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
