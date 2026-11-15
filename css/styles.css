@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 
 /* ROOT */
 
@@ -44,7 +44,7 @@
 /* BODY */
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   color: var(--color-text);
   background-color: var(--color-back3);
 }
@@ -84,7 +84,9 @@ body {
   display: inline-block;
   font-weight: var(--font-medium);
   color: var(--color-text);
-  transition: color var(--transition-base), transform var(--transition-base);
+  transition:
+    color var(--transition-base),
+    transform var(--transition-base);
 }
 
 .nav-list a:hover {
@@ -136,6 +138,165 @@ main {
   font-size: var(--fs-lg);
   font-weight: var(--font-medium);
   color: var(--color-text2);
+}
+
+/*================= ABOUT ====================*/
+
+.about-bio {
+  margin-top: var(--header-height);
+}
+
+.about-title {
+  font-size: var(--fs-4xl);
+  font-weight: var(--font-medium);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.about-article {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xl);
+  align-items: center;
+}
+
+.about-image {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.about-article figure {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  flex: 1 1 400px;
+}
+
+.about-text {
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+.about-text p {
+  font-size: var(--fs-lg);
+  font-weight: var(--font-medium);
+  color: var(--color-text2);
+}
+
+.about-text p:first-of-type {
+  margin-bottom: var(--spacing-md);
+}
+
+.about-experience,
+.about-education,
+.about-values {
+  background-color: var(--color-back2);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.about-buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xl);
+}
+
+.about-btn,
+.about-btn2,
+.about-btn3 {
+  display: inline-block;
+  background-color: var(--color-back2);
+  padding: 8px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-primary);
+  font-size: var(--fs-lg);
+  font-weight: var(--font-bold);
+  transition:
+    color var(--transition-base),
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    background-color var(--transition-base);
+}
+.about-btn:hover,
+.about-btn2:hover,
+.about-btn3:hover {
+  background-color: var(--color-primary);
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0px 4px 0px rgba(214, 154, 89, 0.35);
+  color: var(--color-back2);
+}
+
+.about-btn:focus-visible,
+.about-btn2:focus-visible,
+.about-btn3:focus-visible {
+  background-color: var(--color-primary);
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0px 4px 0px rgba(214, 154, 89, 0.35);
+  outline: none;
+  color: var(--color-back2);
+}
+
+.about-subtitle-name,
+.about-section-title {
+  font-size: var(--fs-3xl);
+  font-weight: var(--font-medium);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.about-subtitle-description,
+.experience-title,
+.education-title,
+.values-title {
+  font-size: var(--fs-xl);
+  font-weight: var(--font-medium);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.experience-description,
+.education-description,
+.education-date,
+.values-description {
+  margin: var(--spacing-sm);
+  font-size: var(--fs-lg);
+  font-weight: var(--font-medium);
+  color: var(--color-text2);
+}
+
+.experience-tasks {
+  margin-top: var(--spacing-sm);
+  font-size: var(--fs-lg);
+  font-weight: var(--font-medium);
+  color: var(--color-text2);
+  list-style: disc;
+  margin-left: var(--spacing-md);
+}
+
+.experience-tasks li::marker {
+  color: var(--color-primary);
+}
+
+.education-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.values-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  list-style: disc;
+  margin-left: var(--spacing-md);
+}
+
+.values-list li::marker {
+  color: var(--color-primary);
 }
 
 /* ================== CONTACTO ====================*/
@@ -223,8 +384,11 @@ main {
   border: 1px solid var(--color-primary);
   font-size: var(--fs-sm);
   font-weight: var(--font-medium);
-  transition: color var(--transition-base), transform var(--transition-base),
-    box-shadow var(--transition-base), background-color var(--transition-base);
+  transition:
+    color var(--transition-base),
+    transform var(--transition-base),
+    box-shadow var(--transition-base),
+    background-color var(--transition-base);
 }
 
 .button-1:hover,
@@ -281,7 +445,9 @@ footer a:focus-visible {
 .footer-nav a {
   font-weight: var(--font-medium);
   color: var(--color-text);
-  transition: color var(--transition-base), transform var(--transition-base);
+  transition:
+    color var(--transition-base),
+    transform var(--transition-base);
 }
 
 .footer-nav a:hover {
@@ -376,5 +542,29 @@ footer a:focus-visible {
 
   .contact-form {
     padding: var(--spacing-md);
+  }
+
+  .about-title {
+    font-size: var(--fs-3xl);
+  }
+
+  .about-subtitle-name,
+  .about-section-title {
+    font-size: var(--fs-2xl);
+  }
+
+  .about-experience,
+  .about-education,
+  .about-values {
+    padding: var(--spacing-md);
+  }
+
+  .about-article figure {
+    padding: 0;
+    margin-bottom: 0;
+  }
+
+  .about-text {
+    padding: 0;
   }
 }
