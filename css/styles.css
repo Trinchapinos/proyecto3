@@ -494,6 +494,8 @@ footer a:focus-visible {
   justify-content: space-between;
   width: 28px;
   height: 21px;
+  position: relative;
+  z-index: 20;
 }
 
 .hamburger span {
@@ -566,5 +568,28 @@ footer a:focus-visible {
 
   .about-text {
     padding: 0;
+  }
+
+  /* Menú hamburguesa activo */
+
+  .nav-list {
+    background-color: #1c2933;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 70%;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg);
+    z-index: 10;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-list.active {
+    transform: translateX(0);
   }
 }
