@@ -10,6 +10,10 @@ export const header = `
             <li><a href="contacto.html">Contacto</a></li>
           </ul>
         </nav>
+        <button class="btnLightMode" aria-label="Cambiar modo de luz">
+        <span class="iconSun">☀️</span>
+        <span class="iconMoon">🌙</span>
+        </button>
         <button class="hamburger" aria-label="Abrir menú">
           <span></span>
           <span></span>
