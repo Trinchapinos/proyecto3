@@ -512,19 +512,6 @@ footer a:focus-visible {
 }
 
 /* MODO CLARO */
-
-.iconMoon {
-  display: none;
-}
-
-.lightModeActive .iconMoon {
-  display: inline;
-}
-
-.lightModeActive .iconSun {
-  display: none;
-}
-
 * {
   transition:
     background-color 0.4s ease,
@@ -545,6 +532,47 @@ footer a:focus-visible {
   --color-text-placeholder: rgba(50, 70, 58, 0.55);
   --color-border: #a3b898;
   --color-shadow: rgba(31, 45, 38, 0.18);
+}
+
+/* Botón del tema */
+
+.btnLightMode {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btnLightMode:hover {
+  color: var(--color-text);
+}
+
+.iconSun,
+.iconMoon {
+  grid-area: 1 / 1;
+  display: flex;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.iconMoon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.lightModeActive .iconMoon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.lightModeActive .iconSun {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
 }
 
 /*  Responsive */
@@ -609,7 +637,7 @@ footer a:focus-visible {
   /* Menú hamburguesa activo */
 
   .nav-list {
-    background-color: #1c2933;
+    background-color: var(--color-back2);
     position: fixed;
     top: 0;
     right: 0;
@@ -627,5 +655,10 @@ footer a:focus-visible {
 
   .nav-list.active {
     transform: translateX(0);
+  }
+
+  .btnLightMode {
+    margin-left: auto;
+    margin-right: var(--spacing-sm);
   }
 }
