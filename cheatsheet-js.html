@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Guía rápida de JavaScript: variables, funciones, arrays, DOM, eventos, módulos y localStorage."
+    />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Cheatsheet JavaScript | Víctor Jurado Beltrán</title>
+  </head>
+  <body>
+    <header class="header" id="header"></header>
+
+    <nav class="cheatsheet-nav" aria-label="Índice de la guía">
+      <ul>
+        <li><a href="#variables">Variables</a></li>
+        <li><a href="#condicionales">Condicionales</a></li>
+        <li><a href="#funciones">Funciones</a></li>
+        <li><a href="#arrays">Arrays</a></li>
+        <li><a href="#objetos">Objetos</a></li>
+        <li><a href="#dom">DOM</a></li>
+        <li><a href="#eventos">Eventos</a></li>
+        <li><a href="#modulos">Módulos</a></li>
+        <li><a href="#localstorage">localStorage</a></li>
+        <li><a href="#checklist">Checklist</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section class="cheatsheet-hero" id="top">
+        <span class="cheatsheet-badge">Cheatsheet</span>
+        <h1>JavaScript</h1>
+        <p>
+          De las variables al DOM, pasando por módulos y localStorage: lo que
+          usas cada día para dar vida a una web.
+        </p>
+      </section>
+
+      <section class="cheatsheet-content">
+        <article class="cheatsheet-block" id="variables">
+          <h2>Variables y tipos</h2>
+          <p class="cheatsheet-mini">
+            <code>const</code> por defecto, <code>let</code> solo si el valor va
+            a cambiar.
+          </p>
+          <pre><code>const nombre = "Víctor";        // string
+let intentos = 0;                // number
+const activo = true;             // boolean
+const vacio = null;              // sin valor a propósito
+let sinAsignar;                  // undefined
+
+intentos += 1;                   // ahora vale 1
+
+console.log(typeof nombre);      // "string"
+
+// Template string: mezcla texto y variables
+const saludo = `Hola, soy ${nombre} y llevo ${intentos} intento`;</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Usa <code>const</code> siempre que puedas; no obliga a que el
+              valor sea inmutable en objetos y arrays, pero no se puede
+              reasignar.
+            </li>
+            <li>
+              Los template strings van entre comillas invertidas y usan
+              <code>${}</code>.
+            </li>
+            <li><code>console.log()</code> es tu mejor aliado para depurar.</li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="condicionales">
+          <h2>Condicionales y operadores</h2>
+          <p class="cheatsheet-mini">Tomar decisiones en el código.</p>
+          <pre><code>const nota = 7;
+
+if (nota &gt;= 9) {
+  console.log("Sobresaliente");
+} else if (nota &gt;= 5) {
+  console.log("Aprobado");
+} else {
+  console.log("Suspenso");
+}
+
+// Operador ternario
+const estado = nota &gt;= 5 ? "Aprobado" : "Suspenso";
+
+// Comparar: usa SIEMPRE ===
+console.log(5 === "5");   // false (distinto tipo)
+console.log(5 == "5");    // true  (evítalo)
+
+// Lógicos
+if (nota &gt;= 5 &amp;&amp; nota &lt; 9) { /* las dos se cumplen */ }
+if (nota &lt; 5 || nota &gt; 10) { /* se cumple al menos una */ }
+if (!activo) { /* si NO es verdadero */ }
+
+// Valor por defecto
+const tema = localStorage.getItem("theme") ?? "dark";</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              <code>===</code> compara valor y tipo; <code>=</code> asigna, no
+              compara.
+            </li>
+            <li>
+              Valores «falsy»: <code>false</code>, <code>0</code>,
+              <code>""</code>, <code>null</code>, <code>undefined</code> y
+              <code>NaN</code>.
+            </li>
+            <li>
+              <code>??</code> solo usa el valor por defecto si lo de la
+              izquierda es <code>null</code> o <code>undefined</code>.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="funciones">
+          <h2>Funciones</h2>
+          <p class="cheatsheet-mini">
+            Declaradas, de flecha y con parámetros por defecto.
+          </p>
+          <pre><code>// Declarada
+function sumar(a, b) {
+  return a + b;
+}
+
+// Flecha, con llaves: necesita return
+const restar = (a, b) =&gt; {
+  return a - b;
+};
+
+// Flecha, sin llaves: devuelve directamente
+const doble = (n) =&gt; n * 2;
+
+// Valor por defecto
+const saludar = (nombre = "visitante") =&gt; `Hola, ${nombre}`;
+
+console.log(sumar(2, 3));   // 5
+console.log(saludar());     // "Hola, visitante" </code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Sin <code>return</code>, una función devuelve
+              <code>undefined</code>.
+            </li>
+            <li>
+              Una arrow function sin llaves devuelve el resultado de forma
+              implícita.
+            </li>
+            <li>
+              Los paréntesis <code>()</code> son los que ejecutan la función:
+              <code>main()</code> la llama, <code>main</code> no.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="arrays">
+          <h2>Arrays y sus métodos</h2>
+          <p class="cheatsheet-mini">
+            <code>map</code>, <code>filter</code> y <code>find</code> son la
+            base del renderizado dinámico.
+          </p>
+          <pre><code>const skills = ["HTML", "CSS", "JavaScript", "Git"];
+
+skills.push("React");        // añade al final
+console.log(skills.length);  // 5
+console.log(skills[0]);      // "HTML"
+
+// Recorrer
+skills.forEach((skill) =&gt; console.log(skill));
+
+// map: devuelve un array nuevo transformado
+const mayusculas = skills.map((skill) =&gt; skill.toUpperCase());
+
+// filter: se queda solo con lo que cumple la condición
+const cortas = skills.filter((skill) =&gt; skill.length &lt;= 3);
+
+// find: devuelve el primero que cumple (o undefined)
+const git = skills.find((skill) =&gt; skill === "Git");
+
+// includes: ¿está dentro?
+console.log(skills.includes("CSS"));   // true
+
+// reduce: junta todo en un solo valor
+const total = [10, 20, 30].reduce((acc, n) =&gt; acc + n, 0);   // 60</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              <code>map</code> devuelve un array de la misma longitud;
+              <code>filter</code>, uno igual o más corto.
+            </li>
+            <li>
+              Iterar es recorrer los elementos uno a uno, aplicando algo a cada
+              uno.
+            </li>
+            <li>
+              Se pueden encadenar: <code>skills.filter(...).map(...)</code>.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="objetos">
+          <h2>Objetos</h2>
+          <p class="cheatsheet-mini">Datos agrupados en pares clave-valor.</p>
+          <pre><code>const skill = {
+  name: "HTML5",
+  level: "dominada",
+  tags: ["web", "marcado"],
+  describir() {
+    return `${this.name} (${this.level})`;
+  },
+};
+
+// Leer y modificar
+console.log(skill.name);        // punto
+console.log(skill["level"]);    // corchetes
+skill.level = "avanzada";
+
+// Desestructurar
+const { name, level } = skill;
+
+// Copiar y modificar sin tocar el original
+const copia = { ...skill, level: "experto" };
+
+// Claves y valores
+console.log(Object.keys(skill));
+console.log(skill.describir());</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Dentro de un método, <code>this</code> es el objeto que lo llama.
+            </li>
+            <li>
+              Una arrow function no tiene su propio <code>this</code>: en
+              métodos usa la forma normal.
+            </li>
+            <li>
+              Un array de objetos es el formato de tus ficheros de datos
+              (<code>skills.js</code>, <code>cheatsheets.js</code>).
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="dom">
+          <h2>El DOM</h2>
+          <p class="cheatsheet-mini">
+            Seleccionar elementos y cambiar la página desde JavaScript.
+          </p>
+          <pre><code>// Seleccionar
+const titulo = document.querySelector("#titulo");       // uno
+const tarjetas = document.querySelectorAll(".card");    // todos
+
+// Cambiar contenido y clases
+titulo.textContent = "Nuevo título";
+titulo.classList.add("activo");
+titulo.classList.remove("activo");
+titulo.classList.toggle("activo");
+
+// Pintar una lista desde un array
+const contenedor = document.querySelector("#lista");
+contenedor.innerHTML = skills
+  .map((skill) =&gt; `&lt;li&gt;${skill}&lt;/li&gt;`)
+  .join("");
+
+// Crear un elemento a mano
+const parrafo = document.createElement("p");
+parrafo.textContent = "Creado con JavaScript";
+contenedor.append(parrafo);
+
+// Evitar el error típico
+if (!contenedor) return;</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              <code>querySelector</code> devuelve <code>null</code> si no
+              encuentra nada: el error «Cannot set properties of null» viene de
+              ahí.
+            </li>
+            <li>
+              <code>innerHTML</code> reemplaza todo el contenido del elemento,
+              incluidos los títulos que hubiera dentro.
+            </li>
+            <li>
+              El <code>.join("")</code> quita las comas que aparecen al
+              convertir el array en texto.
+            </li>
+            <li>
+              Para un texto simple usa <code>textContent</code>: es más seguro
+              que <code>innerHTML</code>.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="eventos">
+          <h2>Eventos</h2>
+          <p class="cheatsheet-mini">
+            Reaccionar a lo que hace la persona: clics, envíos, teclas.
+          </p>
+          <pre><code>// Clic en un botón
+const boton = document.querySelector("#boton-tema");
+boton.addEventListener("click", () =&gt; {
+  document.body.classList.toggle("lightModeActive");
+});
+
+// Varios elementos: un listener en cada uno
+const tabs = document.querySelectorAll(".tab");
+tabs.forEach((tab) =&gt; {
+  tab.addEventListener("click", (event) =&gt; {
+    const id = event.currentTarget.dataset.tab;
+    console.log("Pestaña pulsada:", id);
+  });
+});
+
+// Formulario: evitar que recargue la página
+const form = document.querySelector("#contacto");
+form.addEventListener("submit", (event) =&gt; {
+  event.preventDefault();
+  console.log("Formulario enviado");
+});</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              <code>addEventListener("evento", función)</code> recibe una
+              función, no la ejecuta.
+            </li>
+            <li>
+              <code>event.currentTarget</code> es el elemento al que pusiste el
+              listener.
+            </li>
+            <li>
+              Con <code>data-tab="docs"</code> en el HTML, lees
+              <code>dataset.tab</code> en JavaScript.
+            </li>
+            <li>
+              Para un sistema de pestañas: al pulsar, quita la clase
+              <code>active</code> a todas y se la pones a la elegida.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="modulos">
+          <h2>Módulos: import y export</h2>
+          <p class="cheatsheet-mini">Un archivo, una responsabilidad.</p>
+          <pre><code>// js/data/skills.js  → export nombrado (con llaves al importar)
+export const skills = [
+  { name: "HTML5", level: "dominada" },
+];
+
+// js/utils/skillsList.js  → export default (sin llaves al importar)
+import { skills } from "../data/skills.js";
+
+export default function skillsList() {
+  const contenedor = document.querySelector("#skills-list");
+  if (!contenedor) return;
+  contenedor.innerHTML = skills
+    .map((skill) =&gt; `&lt;article&gt;${skill.name}&lt;/article&gt;`)
+    .join("");
+}
+
+// js/main.js
+import skillsList from "./utils/skillsList.js";
+
+skillsList();</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Export nombrado → <code>import { nombre }</code>. Export default →
+              <code>import nombre</code>.
+            </li>
+            <li>
+              En los imports del navegador, la extensión <code>.js</code> es
+              obligatoria.
+            </li>
+            <li>
+              El HTML debe cargar el script con <code>type="module"</code>.
+            </li>
+            <li>
+              Los módulos no funcionan abriendo el archivo con doble clic: usa
+              Live Server.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="localstorage">
+          <h2>localStorage</h2>
+          <p class="cheatsheet-mini">
+            Guardar datos en el navegador para que no se pierdan al recargar.
+          </p>
+          <pre><code>// Guardar (clave, valor): solo guarda texto
+localStorage.setItem("theme", "light");
+
+// Leer: devuelve null si no existe
+const tema = localStorage.getItem("theme");
+
+// Borrar
+localStorage.removeItem("theme");
+
+// Objetos y arrays: convertir a texto y volver
+const preferencias = { theme: "dark", idioma: "es" };
+localStorage.setItem("prefs", JSON.stringify(preferencias));
+
+const guardadas = JSON.parse(localStorage.getItem("prefs"));
+
+// Patrón del modo oscuro
+const temaGuardado = localStorage.getItem("theme");
+if (temaGuardado === "light") {
+  document.body.classList.add("lightModeActive");
+}</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Solo guarda texto: para objetos usa <code>JSON.stringify</code> y
+              <code>JSON.parse</code>.
+            </li>
+            <li>
+              Al cargar la página, lee el valor guardado y aplica la clase antes
+              de que el usuario toque nada.
+            </li>
+            <li>
+              Puedes ver y borrar lo guardado en F12 → Application → Local
+              Storage.
+            </li>
+            <li>
+              No guardes contraseñas ni datos sensibles: cualquiera puede
+              leerlo.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="checklist">
+          <h2>Errores típicos y cómo leerlos</h2>
+          <ul class="cheatsheet-tips">
+            <li>
+              <code>Cannot set properties of null</code>: el selector no
+              encontró el elemento (revisa el <code>id</code> y la página).
+            </li>
+            <li>
+              <code>X is not a function</code>: falta un
+              <code>export</code>/<code>import</code>, o lo llamas sin los
+              paréntesis correctos.
+            </li>
+            <li>
+              <code>Failed to resolve module specifier</code>: ruta mal escrita
+              o falta la extensión <code>.js</code>.
+            </li>
+            <li>
+              No pasa nada y no hay error: ¿llamaste a la función en
+              <code>main.js</code>?
+            </li>
+            <li>
+              Cambios que no se ven: guarda el archivo y reinicia Live Server o
+              recarga con Ctrl + Shift + R.
+            </li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer"></footer>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

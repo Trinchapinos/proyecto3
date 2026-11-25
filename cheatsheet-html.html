@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Guía rápida de HTML5 con ejemplos listos para copiar: estructura, texto, enlaces, imágenes, tablas, formularios y accesibilidad."
+    />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Cheatsheet HTML5 | Víctor Jurado Beltrán</title>
+  </head>
+  <body>
+    <header class="header" id="header"></header>
+
+    <nav class="cheatsheet-nav" aria-label="Índice de la guía">
+      <ul>
+        <li><a href="#estructura">Estructura</a></li>
+        <li><a href="#texto">Texto</a></li>
+        <li><a href="#enlaces">Enlaces</a></li>
+        <li><a href="#listas">Listas</a></li>
+        <li><a href="#imagenes">Imágenes</a></li>
+        <li><a href="#tablas">Tablas</a></li>
+        <li><a href="#formularios">Formularios</a></li>
+        <li><a href="#semantica">Semántica</a></li>
+        <li><a href="#atributos">Atributos</a></li>
+        <li><a href="#escape">Escapar código</a></li>
+        <li><a href="#accesibilidad">Accesibilidad</a></li>
+        <li><a href="#checklist">Checklist</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section class="cheatsheet-hero" id="top">
+        <span class="cheatsheet-badge">Cheatsheet</span>
+        <h1>HTML5</h1>
+        <p>
+          Todo lo esencial para escribir HTML limpio y semántico, con ejemplos
+          que puedes copiar y adaptar.
+        </p>
+      </section>
+
+      <section class="cheatsheet-content">
+        <article class="cheatsheet-block" id="estructura">
+          <h2>Estructura básica</h2>
+          <p class="cheatsheet-mini">
+            La plantilla que arranca cualquier página del proyecto.
+          </p>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;meta name="description" content="Descripción breve de la página" /&gt;
+    &lt;link rel="stylesheet" href="./css/styles.css" /&gt;
+    &lt;title&gt;Título de la página&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;header id="header"&gt;&lt;/header&gt;
+    &lt;main&gt;
+      &lt;h1&gt;Contenido principal&lt;/h1&gt;
+    &lt;/main&gt;
+    &lt;footer id="footer"&gt;&lt;/footer&gt;
+    &lt;script type="module" src="./js/main.js"&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              <code>&lt;!DOCTYPE html&gt;</code> va siempre en la primera línea.
+            </li>
+            <li>
+              <code>lang="es"</code> ayuda a los lectores de pantalla y a los
+              traductores.
+            </li>
+            <li>
+              Sin la etiqueta <code>viewport</code>, el diseño responsive no
+              funciona en móvil.
+            </li>
+            <li>
+              El <code>&lt;script type="module"&gt;</code> va al final del
+              <code>&lt;body&gt;</code>.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="texto">
+          <h2>Encabezados y texto</h2>
+          <p class="cheatsheet-mini">
+            Cada etiqueta tiene un significado, no solo un aspecto.
+          </p>
+          <pre><code>&lt;h1&gt;Título principal (uno por página)&lt;/h1&gt;
+&lt;h2&gt;Sección&lt;/h2&gt;
+&lt;h3&gt;Subsección&lt;/h3&gt;
+
+&lt;p&gt;Un párrafo normal con &lt;strong&gt;importancia&lt;/strong&gt; y &lt;em&gt;énfasis&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Texto &lt;mark&gt;resaltado&lt;/mark&gt; y &lt;small&gt;letra pequeña&lt;/small&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  Una cita larga, con su propio bloque.
+&lt;/blockquote&gt;
+
+&lt;p&gt;Usa &lt;code&gt;console.log()&lt;/code&gt; para código dentro de una frase.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Bloque de código
+  que conserva los espacios&lt;/code&gt;&lt;/pre&gt;
+
+&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;
+&lt;br /&gt;
+&lt;hr /&gt;</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Un solo <code>&lt;h1&gt;</code> por página, y no te saltes niveles
+              (de <code>h2</code> a <code>h4</code>).
+            </li>
+            <li>
+              <code>&lt;strong&gt;</code> y <code>&lt;em&gt;</code> tienen
+              significado; para solo dar estilo usa CSS.
+            </li>
+            <li>
+              Elige el encabezado por su jerarquía, no por el tamaño que tiene.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="enlaces">
+          <h2>Enlaces y anclas</h2>
+          <p class="cheatsheet-mini">
+            Navegar por la web, por tu proyecto y por la misma página.
+          </p>
+          <pre><code>&lt;!-- Externo: se abre en una pestaña nueva --&gt;
+&lt;a href="https://developer.mozilla.org/es/" target="_blank" rel="noopener noreferrer"&gt;
+  MDN Web Docs
+&lt;/a&gt;
+
+&lt;!-- Interno: otra página de tu proyecto --&gt;
+&lt;a href="about.html"&gt;Sobre mí&lt;/a&gt;
+
+&lt;!-- Ancla: salta a un elemento con ese id --&gt;
+&lt;a href="#formularios"&gt;Ir a formularios&lt;/a&gt;
+&lt;section id="formularios"&gt;...&lt;/section&gt;
+
+&lt;!-- Correo y teléfono --&gt;
+&lt;a href="mailto:hola@ejemplo.com"&gt;Escríbeme&lt;/a&gt;
+&lt;a href="tel:+34600000000"&gt;Llámame&lt;/a&gt;
+
+&lt;!-- Descarga --&gt;
+&lt;a href="cv.pdf" download&gt;Descargar CV&lt;/a&gt;</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              El texto del enlace debe tener sentido solo: mejor «Ver cheatsheet
+              de CSS» que «pulsa aquí».
+            </li>
+            <li>
+              Con <code>target="_blank"</code> añade siempre
+              <code>rel="noopener noreferrer"</code>.
+            </li>
+            <li>
+              Las anclas funcionan porque el <code>id</code> de destino coincide
+              con el <code>href</code> sin la almohadilla.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="listas">
+          <h2>Listas</h2>
+          <p class="cheatsheet-mini">Sin orden, con orden y de definiciones.</p>
+          <pre><code>&lt;ul&gt;
+  &lt;li&gt;HTML&lt;/li&gt;
+  &lt;li&gt;
+    CSS
+    &lt;ul&gt;
+      &lt;li&gt;Flexbox&lt;/li&gt;
+      &lt;li&gt;Grid&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Escribir el HTML&lt;/li&gt;
+  &lt;li&gt;Añadir el CSS&lt;/li&gt;
+  &lt;li&gt;Programar el JavaScript&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;DOM&lt;/dt&gt;
+  &lt;dd&gt;Representación de la página que JavaScript puede modificar.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Los únicos hijos directos de <code>&lt;ul&gt;</code> y
+              <code>&lt;ol&gt;</code> son <code>&lt;li&gt;</code>.
+            </li>
+            <li>
+              Los menús de navegación son, en realidad, listas de enlaces.
+            </li>
+            <li>
+              Una sublista va dentro del <code>&lt;li&gt;</code> al que
+              pertenece.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="imagenes">
+          <h2>Imágenes</h2>
+          <p class="cheatsheet-mini">
+            Que se vean bien, carguen rápido y se entiendan sin verlas.
+          </p>
+          <pre><code>&lt;img
+  src="./img/pinar.jpg"
+  alt="Pinar de pino carrasco en una ladera al atardecer"
+  width="800"
+  height="450"
+  loading="lazy"
+/&gt;
+
+&lt;figure&gt;
+  &lt;img src="./img/mapa.png" alt="Mapa de la ruta forestal" /&gt;
+  &lt;figcaption&gt;Ruta de 12 km por la sierra&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;picture&gt;
+  &lt;source srcset="./img/hero.webp" type="image/webp" /&gt;
+  &lt;img src="./img/hero.jpg" alt="Escritorio con portátil junto a una ventana" /&gt;
+&lt;/picture&gt;
+
+&lt;!-- Imagen decorativa: alt vacío --&gt;
+&lt;img src="./img/linea.svg" alt="" /&gt;</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              El <code>alt</code> describe lo que aporta la imagen, no empieza
+              por «imagen de».
+            </li>
+            <li>
+              Si es solo decorativa, deja <code>alt=""</code> para que el lector
+              la ignore.
+            </li>
+            <li>
+              <code>width</code> y <code>height</code> evitan que la página
+              «salte» al cargar la imagen.
+            </li>
+            <li>
+              <code>loading="lazy"</code> en las imágenes que no se ven al abrir
+              la página.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="tablas">
+          <h2>Tablas</h2>
+          <p class="cheatsheet-mini">Solo para datos, nunca para maquetar.</p>
+          <pre><code>&lt;table&gt;
+  &lt;caption&gt;Especies forestales habituales&lt;/caption&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th scope="col"&gt;Especie&lt;/th&gt;
+      &lt;th scope="col"&gt;Tipo&lt;/th&gt;
+      &lt;th scope="col"&gt;Altura aproximada&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Pino carrasco&lt;/td&gt;
+      &lt;td&gt;Conífera&lt;/td&gt;
+      &lt;td&gt;15 m&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Encina&lt;/td&gt;
+      &lt;td&gt;Frondosa&lt;/td&gt;
+      &lt;td&gt;12 m&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              <code>&lt;caption&gt;</code> es el título de la tabla y mejora la
+              accesibilidad.
+            </li>
+            <li>
+              <code>&lt;th scope="col"&gt;</code> indica que esa celda es el
+              encabezado de su columna.
+            </li>
+            <li>
+              Separa la cabecera (<code>thead</code>) del cuerpo
+              (<code>tbody</code>).
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="formularios">
+          <h2>Formularios</h2>
+          <p class="cheatsheet-mini">
+            Etiquetas, tipos de campo y validación nativa.
+          </p>
+          <pre><code>&lt;form action="#" method="post"&gt;
+  &lt;label for="nombre"&gt;Nombre&lt;/label&gt;
+  &lt;input type="text" id="nombre" name="nombre" minlength="2" required /&gt;
+
+  &lt;label for="email"&gt;Email&lt;/label&gt;
+  &lt;input type="email" id="email" name="email" placeholder="tu@correo.com" required /&gt;
+
+  &lt;label for="motivo"&gt;Motivo&lt;/label&gt;
+  &lt;select id="motivo" name="motivo"&gt;
+    &lt;option value=""&gt;Elige una opción&lt;/option&gt;
+    &lt;option value="trabajo"&gt;Propuesta de trabajo&lt;/option&gt;
+    &lt;option value="duda"&gt;Duda&lt;/option&gt;
+  &lt;/select&gt;
+
+  &lt;label for="mensaje"&gt;Mensaje&lt;/label&gt;
+  &lt;textarea id="mensaje" name="mensaje" rows="4"&gt;&lt;/textarea&gt;
+
+  &lt;label&gt;
+    &lt;input type="checkbox" name="privacidad" required /&gt;
+    Acepto la política de privacidad
+  &lt;/label&gt;
+
+  &lt;button type="submit"&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              El <code>for</code> del <code>&lt;label&gt;</code> debe coincidir
+              con el <code>id</code> del campo.
+            </li>
+            <li>
+              El atributo <code>name</code> es el que se envía: sin él, el campo
+              no viaja.
+            </li>
+            <li>
+              Los tipos <code>email</code>, <code>number</code> o
+              <code>date</code> validan y adaptan el teclado del móvil.
+            </li>
+            <li>
+              <code>required</code>, <code>minlength</code> y
+              <code>pattern</code> validan sin escribir JavaScript.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="semantica">
+          <h2>HTML semántico</h2>
+          <p class="cheatsheet-mini">
+            Etiquetas que describen qué es cada parte de la página.
+          </p>
+          <pre><code>&lt;header&gt;Logo y menú&lt;/header&gt;
+
+&lt;nav aria-label="Principal"&gt;
+  &lt;ul&gt;...&lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Skills&lt;/h2&gt;
+    &lt;article&gt;
+      &lt;h3&gt;HTML5&lt;/h3&gt;
+      &lt;p&gt;Descripción de la skill.&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/section&gt;
+
+  &lt;aside&gt;Contenido relacionado&lt;/aside&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;Redes y copyright&lt;/footer&gt;</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              <code>&lt;main&gt;</code> es único por página y contiene lo
+              principal.
+            </li>
+            <li>
+              <code>&lt;section&gt;</code> agrupa un tema y suele llevar su
+              propio encabezado.
+            </li>
+            <li>
+              <code>&lt;article&gt;</code> es un bloque que tendría sentido por
+              sí solo (una tarjeta, una noticia).
+            </li>
+            <li>
+              Un <code>&lt;div&gt;</code> no dice nada: úsalo solo si ninguna
+              otra etiqueta encaja.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="atributos">
+          <h2>Atributos globales</h2>
+          <p class="cheatsheet-mini">Funcionan en cualquier etiqueta.</p>
+          <pre><code>&lt;section id="skills" class="skills destacada"&gt;
+  &lt;article data-nivel="dominada" data-tecnologia="html"&gt;
+    &lt;h3 title="Lenguaje de marcado"&gt;HTML5&lt;/h3&gt;
+  &lt;/article&gt;
+&lt;/section&gt;
+
+&lt;p hidden&gt;Oculto hasta que JavaScript lo muestre&lt;/p&gt;
+&lt;button aria-label="Cerrar menú" tabindex="0"&gt;✕&lt;/button&gt;
+&lt;span lang="en"&gt;Responsive design&lt;/span&gt;</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              El <code>id</code> es único en toda la página; la
+              <code>class</code> se puede repetir.
+            </li>
+            <li>
+              Los <code>data-*</code> guardan información para JavaScript
+              (<code>elemento.dataset.nivel</code>).
+            </li>
+            <li>
+              <code>hidden</code> oculta el elemento, pero sigue en el HTML.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="escape">
+          <h2>Mostrar código en una web</h2>
+          <p class="cheatsheet-mini">
+            Para enseñar una etiqueta en pantalla hay que «escapar» sus
+            símbolos.
+          </p>
+          <pre><code>&lt;!-- Lo que escribes en el HTML --&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;h1&amp;gt;Hola&amp;lt;/h1&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+
+&lt;!-- Lo que se ve en el navegador --&gt;
+&lt;h1&gt;Hola&lt;/h1&gt;
+
+&lt;!-- Entidades más habituales --&gt;
+&amp;lt;   se ve como  &lt;
+&amp;gt;   se ve como  &gt;
+&amp;amp;  se ve como  &amp;
+&amp;quot; se ve como  "
+&amp;copy; se ve como  ©</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Si escribes <code>&lt;h1&gt;</code> dentro de
+              <code>&lt;code&gt;</code> sin escapar, el navegador lo interpreta
+              como HTML real.
+            </li>
+            <li>
+              Regla para recordarlo: <code>&amp;lt;</code> = *less than* (menor
+              que) y <code>&amp;gt;</code> = *greater than* (mayor que).
+            </li>
+            <li>
+              Escapa también el <code>&amp;</code>, que es el símbolo con el que
+              empiezan las entidades.
+            </li>
+            <li>
+              Para bloques largos, <code>&lt;pre&gt;&lt;code&gt;</code> conserva
+              los saltos de línea y los espacios.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="accesibilidad">
+          <h2>Accesibilidad (A11y)</h2>
+          <p class="cheatsheet-mini">
+            Una web que funciona para todas las personas.
+          </p>
+          <pre><code>&lt;!-- Enlace para saltar el menú con teclado --&gt;
+&lt;a class="skip-link" href="#contenido"&gt;Saltar al contenido&lt;/a&gt;
+&lt;main id="contenido"&gt;...&lt;/main&gt;
+
+&lt;!-- Botón que abre y cierra el menú --&gt;
+&lt;button aria-expanded="false" aria-controls="menu"&gt;Menú&lt;/button&gt;
+&lt;nav id="menu" hidden&gt;...&lt;/nav&gt;
+
+&lt;!-- Mensajes que el lector de pantalla anuncia --&gt;
+&lt;p aria-live="polite" id="estado"&gt;&lt;/p&gt;</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Usa primero la etiqueta correcta; ARIA solo cuando la semántica no
+              baste.
+            </li>
+            <li>
+              Comprueba que todo se puede usar solo con teclado (Tab, Enter,
+              Esc).
+            </li>
+            <li>
+              Cuida el contraste entre texto y fondo, también en modo claro y
+              oscuro.
+            </li>
+            <li>
+              No elimines el <code>outline</code> del foco sin ofrecer una
+              alternativa visible.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="checklist">
+          <h2>Checklist antes de publicar</h2>
+          <ul class="cheatsheet-tips">
+            <li>Un solo <code>&lt;h1&gt;</code> y encabezados en orden.</li>
+            <li>
+              Todas las imágenes tienen <code>alt</code> (o
+              <code>alt=""</code> si son decorativas).
+            </li>
+            <li>
+              Cada <code>&lt;input&gt;</code> tiene su
+              <code>&lt;label&gt;</code> conectado por <code>for</code> e
+              <code>id</code>.
+            </li>
+            <li>
+              Los enlaces externos llevan
+              <code>rel="noopener noreferrer"</code>.
+            </li>
+            <li>La página pasa el validador de HTML del W3C sin errores.</li>
+            <li>Se ve bien en móvil y se puede usar con teclado.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer"></footer>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Guía rápida de CSS3: selectores, modelo de caja, variables, Flexbox, Grid, responsive y modo oscuro."
+    />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Cheatsheet CSS3 | Víctor Jurado Beltrán</title>
+  </head>
+  <body>
+    <header class="header" id="header"></header>
+
+    <nav class="cheatsheet-nav" aria-label="Índice de la guía">
+      <ul>
+        <li><a href="#selectores">Selectores</a></li>
+        <li><a href="#caja">Modelo de caja</a></li>
+        <li><a href="#unidades">Unidades</a></li>
+        <li><a href="#variables">Variables y color</a></li>
+        <li><a href="#flexbox">Flexbox</a></li>
+        <li><a href="#grid">Grid</a></li>
+        <li><a href="#posicion">Posición</a></li>
+        <li><a href="#responsive">Responsive</a></li>
+        <li><a href="#animaciones">Transiciones</a></li>
+        <li><a href="#modo-oscuro">Modo oscuro</a></li>
+        <li><a href="#checklist">Checklist</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <section class="cheatsheet-hero" id="top">
+        <span class="cheatsheet-badge">Cheatsheet</span>
+        <h1>CSS3</h1>
+        <p>
+          Selectores, maquetación y responsive: la referencia rápida para dar
+          estilo a tu portfolio.
+        </p>
+      </section>
+
+      <section class="cheatsheet-content">
+        <article class="cheatsheet-block" id="selectores">
+          <h2>Selectores</h2>
+          <p class="cheatsheet-mini">
+            Cómo elegir a qué elementos se aplica una regla.
+          </p>
+          <pre><code>/* Etiqueta */
+p { line-height: 1.6; }
+
+/* Clase (se puede repetir) */
+.card { border-radius: 12px; }
+
+/* Id (único) */
+#header { position: sticky; }
+
+/* Descendiente: cualquier h3 dentro de .card */
+.card h3 { margin-bottom: 0.5rem; }
+
+/* Hijo directo */
+nav &gt; ul { display: flex; }
+
+/* Varios a la vez */
+h1, h2, h3 { font-family: "Roboto", sans-serif; }
+
+/* Estados y posición */
+a:hover { text-decoration: underline; }
+li:first-child { font-weight: bold; }
+li:nth-child(even) { background: #f2f2f2; }
+
+/* Atributo */
+a[target="_blank"] { color: teal; }
+
+/* Pseudoelemento */
+.titulo::after { content: " →"; }</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Prioridad de mayor a menor: estilo en línea, <code>id</code>,
+              clase, etiqueta.
+            </li>
+            <li>
+              Si dos reglas tienen la misma prioridad, gana la que está más
+              abajo.
+            </li>
+            <li>
+              Para estilos, usa clases: los <code>id</code> pesan demasiado y no
+              se pueden repetir.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="caja">
+          <h2>Modelo de caja</h2>
+          <p class="cheatsheet-mini">
+            Todo elemento es una caja: contenido, padding, borde y margin.
+          </p>
+          <pre><code>*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.card {
+  width: 300px;
+  padding: 1rem;            /* espacio por dentro */
+  border: 1px solid #ccc;   /* borde */
+  margin: 0 auto 1.5rem;    /* espacio por fuera */
+}
+
+/* Atajos: arriba abajo | izquierda derecha */
+.boton { padding: 0.5rem 1.25rem; }
+
+/* Un valor por lado: arriba derecha abajo izquierda */
+.caja { margin: 10px 20px 10px 20px; }</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Con <code>box-sizing: border-box</code>, el
+              <code>width</code> incluye padding y borde.
+            </li>
+            <li>
+              <code>margin: 0 auto</code> centra horizontalmente un bloque con
+              ancho definido.
+            </li>
+            <li>
+              Con dos valores: el primero es arriba/abajo, el segundo
+              izquierda/derecha.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="unidades">
+          <h2>Unidades de medida</h2>
+          <p class="cheatsheet-mini">Cuándo usar cada una.</p>
+          <pre><code>html { font-size: 100%; }          /* 16px por defecto */
+
+h1 { font-size: 2.5rem; }           /* rem: relativa al html */
+.icono { width: 1.5em; }            /* em: relativa al padre */
+.card { width: 50%; }               /* %: relativa al contenedor */
+.hero { min-height: 100vh; }        /* vh: alto de la pantalla */
+.contenedor { max-width: 70ch; }    /* ch: ancho de un carácter */
+
+/* Tamaños que se adaptan solos */
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+.contenedor { width: min(90%, 1100px); margin-inline: auto; }</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              <code>rem</code> para tipografías y espacios: respeta el tamaño
+              que elige la persona.
+            </li>
+            <li><code>px</code> para detalles finos, como un borde de 1px.</li>
+            <li>
+              <code>clamp(mínimo, ideal, máximo)</code> evita muchos media
+              queries.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="variables">
+          <h2>Colores y variables</h2>
+          <p class="cheatsheet-mini">
+            Define la paleta una vez y úsala en todo el sitio.
+          </p>
+          <pre><code>/* Variables en :root, disponibles en toda la página */
+:root {
+  --color-fondo: #0f1a14;
+  --color-texto: #e8efe9;
+  --color-acento: #4caf7a;
+  --radio: 12px;
+  --sombra: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+}
+
+.boton {
+  background-color: var(--color-acento);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+/* Formatos de color */
+.ejemplo-1 { color: #4caf7a; }
+.ejemplo-2 { color: rgb(76 175 122); }
+.ejemplo-3 { color: hsl(147 40% 49%); }
+.ejemplo-4 { color: rgb(0 0 0 / 50%); }  /* con transparencia */</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Las variables se declaran con <code>--nombre</code> y se usan con
+              <code>var(--nombre)</code>.
+            </li>
+            <li>
+              Cambiar una variable cambia todo el sitio: perfecto para el modo
+              oscuro.
+            </li>
+            <li>
+              Si usas un valor de color más de dos veces, conviértelo en
+              variable.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="flexbox">
+          <h2>Flexbox</h2>
+          <p class="cheatsheet-mini">
+            Para colocar elementos en una sola dimensión: fila o columna.
+          </p>
+          <pre><code>/* El contenedor */
+.menu {
+  display: flex;
+  flex-direction: row;            /* row | column */
+  justify-content: space-between; /* eje principal */
+  align-items: center;            /* eje cruzado */
+  flex-wrap: wrap;                /* permite pasar a otra línea */
+  gap: 1rem;                      /* separación entre hijos */
+}
+
+/* Los hijos */
+.menu-item {
+  flex: 1 1 200px;  /* crece | se encoge | tamaño base */
+}
+
+/* Centrar algo en la pantalla */
+.centro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              <code>justify-content</code> actúa en el eje principal;
+              <code>align-items</code>, en el cruzado.
+            </li>
+            <li>
+              Si cambias a <code>flex-direction: column</code>, los dos ejes se
+              intercambian.
+            </li>
+            <li>
+              <code>gap</code> es mucho más cómodo que poner márgenes a cada
+              hijo.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="grid">
+          <h2>CSS Grid</h2>
+          <p class="cheatsheet-mini">
+            Para maquetar en dos dimensiones: filas y columnas.
+          </p>
+          <pre><code>/* Tarjetas que se reparten solas */
+.lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Tres columnas fijas */
+.tres-columnas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* Un elemento que ocupa dos columnas */
+.destacada {
+  grid-column: span 2;
+}
+
+/* Maquetación con áreas con nombre */
+.pagina {
+  display: grid;
+  grid-template-areas:
+    "cabecera cabecera"
+    "menu     contenido"
+    "pie      pie";
+}
+.cabecera { grid-area: cabecera; }</code></pre>
+          <ul class="cheatsheet-tips">
+            <li><code>1fr</code> significa «una parte del espacio libre».</li>
+            <li>
+              <code>repeat(auto-fit, minmax(220px, 1fr))</code> crea un diseño
+              responsive sin media queries.
+            </li>
+            <li>
+              Flexbox para alinear una fila de cosas; Grid para organizar una
+              cuadrícula.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="posicion">
+          <h2>Posición</h2>
+          <p class="cheatsheet-mini">Sticky, absolute y compañía.</p>
+          <pre><code>/* Se queda fijo al hacer scroll, dentro de su contenedor */
+.cheatsheet-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* El padre es la referencia... */
+.card {
+  position: relative;
+}
+
+/* ...y el hijo se coloca respecto a él */
+.card .etiqueta {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+/* Fijo respecto a la ventana */
+.boton-subir {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+}</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              <code>sticky</code> necesita un <code>top</code> (o similar) para
+              saber dónde pegarse.
+            </li>
+            <li>
+              No funciona si un elemento padre tiene
+              <code>overflow: hidden</code>.
+            </li>
+            <li>
+              <code>absolute</code> se coloca respecto al antecesor más cercano
+              con <code>position</code> distinto de <code>static</code>.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="responsive">
+          <h2>Responsive design</h2>
+          <p class="cheatsheet-mini">Primero el móvil, luego se amplía.</p>
+          <pre><code>/* 1. Estilos base: pensados para móvil */
+.cheatsheet-nav {
+  display: none;
+}
+
+.lista {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+/* 2. Tablet y escritorio: se añaden mejoras */
+@media (min-width: 768px) {
+  .cheatsheet-nav {
+    display: block;
+  }
+
+  .lista {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1100px) {
+  .lista {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Imágenes que nunca se salen de su caja */
+img {
+  max-width: 100%;
+  height: auto;
+}</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              «Mobile first»: escribe lo básico fuera y amplía con
+              <code>min-width</code>.
+            </li>
+            <li>
+              Puntos de corte habituales: 768px (tablet) y 1100px (escritorio).
+            </li>
+            <li>
+              Para ocultar la navegación lateral en móvil:
+              <code>display: none</code> por defecto.
+            </li>
+            <li>
+              Prueba reduciendo la ventana o con las herramientas del navegador
+              (F12).
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="animaciones">
+          <h2>Transiciones y animaciones</h2>
+          <p class="cheatsheet-mini">
+            Efecto hover en tarjetas y animaciones con keyframes.
+          </p>
+          <pre><code>/* Transición: cambia suavemente entre dos estados */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Animación con keyframes */
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.1); }
+}
+
+.corazon {
+  animation: latido 1.2s ease-in-out infinite;
+}
+
+/* Respeta a quien prefiere menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none;
+    transition: none;
+  }
+}</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Anima <code>transform</code> y <code>opacity</code>: son baratas
+              para el navegador.
+            </li>
+            <li>
+              La <code>transition</code> se escribe en el estado normal, no en
+              el <code>:hover</code>.
+            </li>
+            <li>
+              <code>prefers-reduced-motion</code> evita mareos a personas
+              sensibles al movimiento.
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="modo-oscuro">
+          <h2>Modo claro / oscuro con variables</h2>
+          <p class="cheatsheet-mini">
+            La paleta cambia en un solo sitio, y se combina con localStorage.
+          </p>
+          <pre><code>/* Por defecto: modo oscuro */
+:root {
+  --color-fondo: #0f1a14;
+  --color-texto: #e8efe9;
+  --color-tarjeta: #18271e;
+}
+
+/* Cuando JavaScript añade esta clase, se sobrescribe la paleta */
+.lightModeActive {
+  --color-fondo: #eef6ef;
+  --color-texto: #1b2a20;
+  --color-tarjeta: #ffffff;
+}
+
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card {
+  background-color: var(--color-tarjeta);
+}</code></pre>
+          <ul class="cheatsheet-tips">
+            <li>
+              Todos los colores del sitio deben salir de variables, o el modo
+              claro dejará zonas sin cambiar.
+            </li>
+            <li>
+              JavaScript solo añade o quita la clase; el CSS hace el resto.
+            </li>
+            <li>
+              La clase se guarda en <code>localStorage</code> para que no se
+              pierda al recargar (mira la cheatsheet de JavaScript).
+            </li>
+          </ul>
+        </article>
+
+        <article class="cheatsheet-block" id="checklist">
+          <h2>Checklist de CSS</h2>
+          <ul class="cheatsheet-tips">
+            <li>
+              <code>reset.css</code> cargado antes que <code>styles.css</code>.
+            </li>
+            <li><code>box-sizing: border-box</code> aplicado a todo.</li>
+            <li>Colores, radios y sombras guardados como variables.</li>
+            <li>
+              Estilos base para móvil y mejoras con <code>min-width</code>.
+            </li>
+            <li>Imágenes con <code>max-width: 100%</code>.</li>
+            <li>
+              Estados <code>:hover</code> y <code>:focus-visible</code> en
+              enlaces y botones.
+            </li>
+            <li>Probado en modo claro y modo oscuro.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer" id="footer"></footer>
+    <script type="module" src="./js/main.js"></script>
+  </body>
+</html>
